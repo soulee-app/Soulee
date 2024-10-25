@@ -103,7 +103,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
     await Future.delayed(const Duration(milliseconds: 200));
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => MatchedPage()),
+      MaterialPageRoute(builder: (context) => const MatchedPage()),
     );
   }
 
@@ -135,7 +135,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
                               backgroundColor: Colors.redAccent,
                               padding: const EdgeInsets.symmetric(vertical: 10),
                             ),
-                            child: Text(
+                            child: const Text(
                               "KNOTS",
                               style: TextStyle(color: Colors.black),
                             ),
@@ -152,7 +152,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
                               backgroundColor: Colors.redAccent,
                               padding: const EdgeInsets.symmetric(vertical: 10),
                             ),
-                            child: Text(
+                            child: const Text(
                               "CONNECTIONS",
                               style: TextStyle(color: Colors.black),
                             ),
@@ -251,7 +251,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.redAccent),
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(Icons.filter_list),
                               Text("FILTER"),
@@ -262,7 +262,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.redAccent),
-                          child: Text("BACKWARD"),
+                          child: const Text("BACKWARD"),
                         ),
                       ],
                     ),

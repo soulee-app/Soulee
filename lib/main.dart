@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:navbar/Notification/NotificationScreen.dart';
-import 'package:navbar/knot/knotMatching.dart'; // Import KnotMatchingPage
+import 'package:navbar/feed_page/feed_page.dart';
+import 'package:navbar/knot/knotMatching.dart';
 
 void main() {
   runApp(SouleeApp());
@@ -16,8 +16,6 @@ class SouleeApp extends StatelessWidget {
   }
 }
 
-// NotificationScreen Widget
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -27,12 +25,20 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    Center(child: Text('Running Page', style: TextStyle(fontSize: 24))),
-    NotificationScreen(), // Updated to use NotificationScreen widget
-    KnotMatchingPage(), // KnotMatchingPage within tabs
-    Center(child: Text('Dashboard Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Chat Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Menu Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Running'),
+        child: Text('Running Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Notifications'),
+        child: Text('Notifications Page', style: TextStyle(fontSize: 24))),
+    KnotMatchingPage(key: ValueKey('KnotMatching')),
+    FeedPage(),
+    Center(
+        key: ValueKey('Chat'),
+        child: Text('Chat Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Menu'),
+        child: Text('Menu Page', style: TextStyle(fontSize: 24))),
   ];
 
   void _onItemTapped(int index) {
@@ -44,115 +50,111 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      appBar: AppBar(
+        title: Image.asset(
+          'assets/Logo.png',
+          height: 80,
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Image.asset('assets/Post.png'),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Image.asset('assets/Search.png'),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Column(
         children: [
-          // Display selected page below the navigation bar
-          Positioned.fill(
-            top: 160, // Offset content below the nav bar
-            child: AnimatedSwitcher(
-              duration: Duration(milliseconds: 300),
-              child: _pages[_selectedIndex],
+          Container(
+            height: 60,
+            color: Colors.grey[200],
+            padding: EdgeInsets.symmetric(vertical: 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 0
+                          ? 'assets/Activity_Filled.png'
+                          : 'assets/Activity.png',
+                      height: 50,
+                    ),
+                    onPressed: () => _onItemTapped(0),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 1
+                          ? 'assets/Notification_Filled.png'
+                          : 'assets/Notification.png',
+                      height: 60,
+                    ),
+                    onPressed: () => _onItemTapped(1),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 2
+                          ? 'assets/Knot_Filled.png'
+                          : 'assets/Knot.png',
+                      height: 70,
+                    ),
+                    onPressed: () => _onItemTapped(2),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 3
+                          ? 'assets/Feed_Filled.png'
+                          : 'assets/Feed.png',
+                      height: 50,
+                    ),
+                    onPressed: () => _onItemTapped(3),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 4
+                          ? 'assets/Chat_Filled.png'
+                          : 'assets/Chat.png',
+                      height: 50,
+                    ),
+                    onPressed: () => _onItemTapped(4),
+                  ),
+                ),
+                Expanded(
+                  child: IconButton(
+                    icon: Image.asset(
+                      _selectedIndex == 5
+                          ? 'assets/Menu_Filled.png'
+                          : 'assets/Menu.png',
+                      height: 50,
+                    ),
+                    onPressed: () => _onItemTapped(5),
+                  ),
+                ),
+              ],
             ),
           ),
-
-          // Navigation bar
-          Column(
-            children: [
-              AppBar(
-                title: Image.asset(
-                  'assets/Logo.png',
-                  height: 80, // Soulee logo in app bar
-                ),
-                backgroundColor: Colors.white,
-                elevation: 0,
-                actions: [
-                  IconButton(
-                    icon: Image.asset('assets/Post.png'),
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: Image.asset('assets/Search.png'),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
-              // Navigation icons row
-              Container(
-                height: 80,
-                color: Colors.grey[200],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 0
-                              ? 'assets/Activity_Filled.png'
-                              : 'assets/Activity.png',
-                          height: 50,
-                        ),
-                        onPressed: () => _onItemTapped(0),
-                      ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 1
-                              ? 'assets/Notification_Filled.png'
-                              : 'assets/Notification.png',
-                          height: 60,
-                        ),
-                        onPressed: () => _onItemTapped(1),
-                      ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 2
-                              ? 'assets/Knot_Filled.png'
-                              : 'assets/Knot.png',
-                          height: 70,
-                        ),
-                        onPressed: () => _onItemTapped(2),
-                      ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 3
-                              ? 'assets/Feed_Filled.png'
-                              : 'assets/Feed.png',
-                          height: 50,
-                        ),
-                        onPressed: () => _onItemTapped(3),
-                      ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 4
-                              ? 'assets/Chat_Filled.png'
-                              : 'assets/Chat.png',
-                          height: 50,
-                        ),
-                        onPressed: () => _onItemTapped(4),
-                      ),
-                    ),
-                    Expanded(
-                      child: IconButton(
-                        icon: Image.asset(
-                          _selectedIndex == 5
-                              ? 'assets/Menu_Filled.png'
-                              : 'assets/Menu.png',
-                          height: 50,
-                        ),
-                        onPressed: () => _onItemTapped(5),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+          Expanded(
+            child: Navigator(
+              key: ValueKey('PageNavigator'), // ensures unique navigator
+              onGenerateRoute: (RouteSettings settings) {
+                return MaterialPageRoute(
+                  builder: (context) => _pages[_selectedIndex],
+                );
+              },
+            ),
           ),
         ],
       ),
