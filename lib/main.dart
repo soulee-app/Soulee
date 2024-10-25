@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navbar/Notification/NotificationScreen.dart';
-import 'package:navbar/knot/knotMatching.dart'; // Import KnotMatchingPage
+import 'package:navbar/knot/knotMatching.dart';
 
 void main() {
   runApp(SouleeApp());
@@ -16,8 +16,6 @@ class SouleeApp extends StatelessWidget {
   }
 }
 
-// NotificationScreen Widget
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -28,8 +26,8 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     Center(child: Text('Running Page', style: TextStyle(fontSize: 24))),
-    NotificationScreen(), // Updated to use NotificationScreen widget
-    KnotMatchingPage(), // KnotMatchingPage within tabs
+    NotificationScreen(),
+    KnotMatchingPage(),
     Center(child: Text('Dashboard Page', style: TextStyle(fontSize: 24))),
     Center(child: Text('Chat Page', style: TextStyle(fontSize: 24))),
     Center(child: Text('Menu Page', style: TextStyle(fontSize: 24))),
@@ -46,22 +44,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Display selected page below the navigation bar
           Positioned.fill(
-            top: 160, // Offset content below the nav bar
+            top: 160,
             child: AnimatedSwitcher(
               duration: Duration(milliseconds: 300),
               child: _pages[_selectedIndex],
             ),
           ),
-
-          // Navigation bar
           Column(
             children: [
               AppBar(
                 title: Image.asset(
                   'assets/Logo.png',
-                  height: 80, // Soulee logo in app bar
+                  height: 80,
                 ),
                 backgroundColor: Colors.white,
                 elevation: 0,
@@ -76,9 +71,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              // Navigation icons row
               Container(
-                height: 80,
+                height: 60,
                 color: Colors.grey[200],
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

@@ -15,7 +15,7 @@ class MatchedPage extends StatelessWidget {
               padding: const EdgeInsets.all(0.0),
               child: Column(
                 children: [
-                  Image.asset('assets/knot/soulee.png', height: 0),
+                  Image.asset('assets/knot/soulee.png', height: 60),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
