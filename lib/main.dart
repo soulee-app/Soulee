@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navbar/knot/knotMatching.dart'; // Import KnotMatchingPage
+import 'package:navbar/knot/knotMatching.dart';
 
 void main() {
   runApp(SouleeApp());
@@ -23,17 +23,25 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  // Placeholder pages for each tab
   final List<Widget> _pages = [
-    Center(child: Text('Running Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Notifications Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Social Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Dashboard Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Chat Page', style: TextStyle(fontSize: 24))),
-    Center(child: Text('Menu Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Running'),
+        child: Text('Running Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Notifications'),
+        child: Text('Notifications Page', style: TextStyle(fontSize: 24))),
+    KnotMatchingPage(key: ValueKey('KnotMatching')),
+    Center(
+        key: ValueKey('Dashboard'),
+        child: Text('Dashboard Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Chat'),
+        child: Text('Chat Page', style: TextStyle(fontSize: 24))),
+    Center(
+        key: ValueKey('Menu'),
+        child: Text('Menu Page', style: TextStyle(fontSize: 24))),
   ];
 
-  // Method to handle icon tap
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -46,7 +54,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Image.asset(
           'assets/Logo.png',
-          height: 80, // Soulee logo in app bar
+          height: 80,
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -63,10 +71,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          // Fixed height container for navigation bar
           Container(
-            height: 80, // Increased height for the icon row
-            color: Colors.grey[200], // Background color for icon row
+            height: 60,
+            color: Colors.grey[200],
             padding: EdgeInsets.symmetric(vertical: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -101,13 +108,7 @@ class _HomePageState extends State<HomePage> {
                           : 'assets/Knot.png',
                       height: 70,
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => KnotMatchingPage()),
-                      );
-                    },
+                    onPressed: () => _onItemTapped(2),
                   ),
                 ),
                 Expanded(
@@ -127,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                       _selectedIndex == 4
                           ? 'assets/Chat_Filled.png'
                           : 'assets/Chat.png',
-                      height: 50, // Icon size
+                      height: 50,
                     ),
                     onPressed: () => _onItemTapped(4),
                   ),
@@ -138,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                       _selectedIndex == 5
                           ? 'assets/Menu_Filled.png'
                           : 'assets/Menu.png',
-                      height: 50, // Icon size
+                      height: 50,
                     ),
                     onPressed: () => _onItemTapped(5),
                   ),
@@ -146,13 +147,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-
           Expanded(
-            child: Container(
-              child: AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
-                child: _pages[_selectedIndex],
-              ),
+            child: Navigator(
+              key: ValueKey('PageNavigator'), // ensures unique navigator
+              onGenerateRoute: (RouteSettings settings) {
+                return MaterialPageRoute(
+                  builder: (context) => _pages[_selectedIndex],
+                );
+              },
             ),
           ),
         ],

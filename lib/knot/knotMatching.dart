@@ -100,9 +100,7 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
       _flashVisible = false;
     });
 
-    // Navigate to the MatchedPage when the flash effect is done
-    Navigator.push(
-      context,
+    Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => MatchedPage()),
     );
   }
@@ -119,10 +117,10 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(0.0),
                 child: Column(
                   children: [
-                    Image.asset('assets/knot/soulee.png', height: 60),
+                    Image.asset('assets/knot/soulee.png', height: 0),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

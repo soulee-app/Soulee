@@ -11,12 +11,11 @@ class MatchedPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Top Section (Soulee logo, Knots and Connections buttons)
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(0.0),
               child: Column(
                 children: [
-                  Image.asset('assets/knot/soulee.png', height: 60),
+                  Image.asset('assets/knot/soulee.png', height: 0),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -57,8 +56,6 @@ class MatchedPage extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Middle Section with Soul 1 avatar and quiz options
             Column(
               children: [
                 // Soul 1 Avatar (Top)
@@ -84,7 +81,6 @@ class MatchedPage extends StatelessWidget {
                             'assets/knot/n4.png', screenWidth),
                       ],
                     ),
-                    // Matched 80% overlay
                     Positioned(
                       right: 10,
                       top: 70,
@@ -105,8 +101,6 @@ class MatchedPage extends StatelessWidget {
                 ),
               ],
             ),
-
-            // Bottom Section with Soul 2 avatar, name, age, and buttons
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
@@ -123,7 +117,6 @@ class MatchedPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
 
-                  // Name and Age for Soul 2
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -157,7 +150,6 @@ class MatchedPage extends StatelessWidget {
 
                   const SizedBox(height: 10),
 
-                  // TEXT and KNOT REPORT buttons with timer
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -196,12 +188,11 @@ class MatchedPage extends StatelessWidget {
     );
   }
 
-  // Method to build static quiz options (n1, n2, n3, n4) with 40% opacity
   Widget buildStaticQuizOption(String imagePath, double screenWidth) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0.0),
       child: Opacity(
-        opacity: 0.4, // Set opacity to 40%
+        opacity: 0.4,
         child: Image.asset(
           imagePath,
           width: screenWidth,
