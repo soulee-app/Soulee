@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class MatchedPage extends StatelessWidget {
+  const MatchedPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -28,7 +30,7 @@ class MatchedPage extends StatelessWidget {
                             backgroundColor: Colors.redAccent,
                             padding: const EdgeInsets.symmetric(vertical: 10),
                           ),
-                          child: Text(
+                          child: const Text(
                             "KNOTS",
                             style: TextStyle(color: Colors.black),
                           ),
@@ -45,7 +47,7 @@ class MatchedPage extends StatelessWidget {
                             backgroundColor: Colors.redAccent,
                             padding: const EdgeInsets.symmetric(vertical: 10),
                           ),
-                          child: Text(
+                          child: const Text(
                             "CONNECTIONS",
                             style: TextStyle(color: Colors.black),
                           ),
@@ -87,7 +89,7 @@ class MatchedPage extends StatelessWidget {
                       child: Container(
                         color: Colors.yellow,
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
+                        child: const Text(
                           "MATCHED 80%",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -106,7 +108,7 @@ class MatchedPage extends StatelessWidget {
               child: Column(
                 children: [
                   // Soul 2 Avatar (Bottom)
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircleAvatar(
@@ -123,7 +125,7 @@ class MatchedPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(8.0),
                         color: Colors.yellow,
-                        child: Text(
+                        child: const Text(
                           "ARYA MRIDUL",
                           style: TextStyle(
                             fontSize: 20,
@@ -136,7 +138,7 @@ class MatchedPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(8.0),
                         color: Colors.yellow,
-                        child: Text(
+                        child: const Text(
                           "26",
                           style: TextStyle(
                             fontSize: 20,
@@ -157,10 +159,10 @@ class MatchedPage extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.redAccent),
-                        child: Column(
+                        child: const Column(
                           children: [
                             Text("TEXT"),
-                            const SizedBox(height: 5),
+                            SizedBox(height: 5),
                             Text(
                               "04:59",
                               style: TextStyle(
@@ -175,7 +177,7 @@ class MatchedPage extends StatelessWidget {
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.redAccent),
-                        child: Text("KNOT REPORT"),
+                        child: const Text("KNOT REPORT"),
                       ),
                     ],
                   ),
