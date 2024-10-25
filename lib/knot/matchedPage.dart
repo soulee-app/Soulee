@@ -162,7 +162,7 @@ class MatchedPage extends StatelessWidget {
                             Text("TEXT"),
                             const SizedBox(height: 5),
                             Text(
-                              "04:59", // Timer value
+                              "04:59",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,

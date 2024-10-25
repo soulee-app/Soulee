@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:navbar/knot/matchedPage.dart';
 
 class KnotMatchingPage extends StatefulWidget {
@@ -99,6 +98,9 @@ class _KnotMatchingPageState extends State<KnotMatchingPage>
     setState(() {
       _flashVisible = false;
     });
+
+    // Navigate to MatchedPage after all animations
+    await Future.delayed(const Duration(milliseconds: 200));
 
     Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => MatchedPage()),
